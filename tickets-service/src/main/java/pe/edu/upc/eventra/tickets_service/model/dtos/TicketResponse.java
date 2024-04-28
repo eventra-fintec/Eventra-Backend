@@ -9,8 +9,8 @@ import lombok.*;
 public class TicketResponse {
     private Long ticketID;
     private EventResponse event;
-    private double price;
-    private int totalAvailable;
+    private Double price;
+    private Integer totalAvailable;
     private String category;
     private String description;
 }

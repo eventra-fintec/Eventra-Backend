@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class TicketService {
     private final TicketRepository ticketRepository;
-    private final EventClient eventClient; // Feign client to interact with the Event microservice
+    private final EventClient eventClient;
 
     @Transactional
     public TicketResponse addTicket(TicketRequest ticketRequest) {
@@ -85,13 +85,21 @@ public class TicketService {
             eventResponse = eventClient.getEventById(ticket.getEventID());
         } catch (FeignException e) {
             log.error("Event service is unavailable, unable to fetch event details", e);
-            // If the event service is down, you can choose to return null or a default EventResponse
-            eventResponse = null;
+            eventResponse = EventResponse.builder()
+                    .id(null)
+                    .title(null)
+                    .description(null)
+                    .startDate(null)
+                    .endDate(null)
+                    .location(null)
+                    .organizer(null)
+                    .categoryEvent(null)
+                    .build();
         }
 
         return TicketResponse.builder()
                 .ticketID(ticket.getTicketID())
-                .event(eventResponse) // Include the full EventResponse here
+                .event(eventResponse)
                 .price(ticket.getPrice())
                 .totalAvailable(ticket.getTotalAvailable())
                 .category(ticket.getCategory())

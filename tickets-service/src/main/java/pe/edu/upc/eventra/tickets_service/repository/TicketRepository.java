@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pe.edu.upc.eventra.tickets_service.model.entities.Ticket;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
-    // Custom query methods can be added here if needed.
+
 }
 

@@ -8,8 +8,8 @@ import lombok.*;
 @Builder
 public class TicketRequest {
     private Long eventID;
-    private double price;
-    private int totalAvailable;
+    private Double price;
+    private Integer totalAvailable;
     private String category;
     private String description;
 }

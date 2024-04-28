@@ -25,11 +25,10 @@ import java.util.stream.Collectors;
 public class EventService {
     private final EventRepository eventRepository;
     private final CategoryEventRepository categoryEventRepository;
-    private final UserClient userClient; // Feign client to interact with the User microservice
+    private final UserClient userClient;
 
     @Transactional
     public EventResponse addEvent(EventRequest eventRequest) {
-        // Validate the organizerId by calling the User service
         UserResponse organizer = userClient.getUserById(eventRequest.getOrganizerId());
 
         CategoryEvent categoryEvent = categoryEventRepository.findById(eventRequest.getCategoryId())
@@ -41,7 +40,7 @@ public class EventService {
                 .startDate(eventRequest.getStartDate())
                 .endDate(eventRequest.getEndDate())
                 .location(eventRequest.getLocation())
-                .organizerId(organizer.getUserId()) // Set the validated user ID
+                .organizerId(organizer.getUserId())
                 .categoryEvent(categoryEvent)
                 .build();
 
@@ -95,12 +94,18 @@ public class EventService {
     }
 
     private EventResponse mapToEventResponse(Event event) {
-        UserResponse organizer = null;
+        UserResponse organizer;
         try {
             organizer = userClient.getUserById(event.getOrganizerId());
         } catch (FeignException e) {
             log.error("User service is unavailable, unable to fetch organizer details", e);
-            // You can leave organizer as null or set it to a default UserResponse object
+            organizer = UserResponse.builder()
+                    .userId(null)
+                    .firstName(null)
+                    .lastName(null)
+                    .email(null)
+                    .typeOfUser(null)
+                    .build();
         }
         CategoryEventResponse categoryResponse = CategoryEventResponse.builder()
                 .id(event.getCategoryEvent().getId())
@@ -115,7 +120,7 @@ public class EventService {
                 .startDate(event.getStartDate())
                 .endDate(event.getEndDate())
                 .location(event.getLocation())
-                .organizer(organizer) // Replace organizerId with the full organizer UserResponse
+                .organizer(organizer)
                 .categoryEvent(categoryResponse)
                 .build();
     }

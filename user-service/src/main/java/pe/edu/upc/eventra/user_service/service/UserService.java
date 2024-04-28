@@ -27,7 +27,7 @@ public class UserService {
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
-                .password(request.getPassword()) // Ensure this is hashed in a real-world scenario
+                .password(request.getPassword())
                 .typeOfUser(userType)
                 .build();
         userRepository.save(user);
@@ -50,7 +50,7 @@ public class UserService {
         existingUser.setFirstName(userRequest.getFirstName());
         existingUser.setLastName(userRequest.getLastName());
         existingUser.setEmail(userRequest.getEmail());
-        existingUser.setPassword(userRequest.getPassword()); // Ensure this is hashed in a real-world scenario
+        existingUser.setPassword(userRequest.getPassword());
         existingUser.setTypeOfUser(userType);
 
         userRepository.save(existingUser);

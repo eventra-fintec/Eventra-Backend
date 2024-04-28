@@ -14,7 +14,7 @@ import lombok.*;
 public class TypeOfUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long typeId;
+    private Long typeId;
 
     @Column(name = "description")
     private String description;

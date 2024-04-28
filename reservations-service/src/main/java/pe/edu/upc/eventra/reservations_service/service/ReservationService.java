@@ -10,7 +10,6 @@ import pe.edu.upc.eventra.reservations_service.model.dtos.ReservationResponse;
 import pe.edu.upc.eventra.reservations_service.model.dtos.TicketResponse;
 import pe.edu.upc.eventra.reservations_service.model.dtos.UserResponse;
 import pe.edu.upc.eventra.reservations_service.model.entities.Reservation;
-import pe.edu.upc.eventra.reservations_service.repository.EventClient;
 import pe.edu.upc.eventra.reservations_service.repository.ReservationRepository;
 import pe.edu.upc.eventra.reservations_service.repository.TicketClient;
 import pe.edu.upc.eventra.reservations_service.repository.UserClient;
@@ -90,24 +89,35 @@ public class ReservationService {
             userResponse = userClient.getUserById(reservation.getUserID());
         } catch (FeignException e) {
             log.error("Service is unavailable, unable to fetch details", e);
-            userResponse = null;
+            userResponse = UserResponse.builder()
+                    .userId(null)
+                    .firstName(null)
+                    .lastName(null)
+                    .email(null)
+                    .typeOfUser(null)
+                    .build();
         }
 
         try {
             ticketResponse = ticketClient.getTicketById(reservation.getTicketID());
         } catch (FeignException e) {
             log.error("Service is unavailable, unable to fetch details", e);
-            ticketResponse = null;
+            ticketResponse = TicketResponse.builder()
+                    .ticketID(null)
+                    .event(null)
+                    .price(null)
+                    .totalAvailable(null)
+                    .category(null)
+                    .description(null)
+                    .build();
         }
 
         return ReservationResponse.builder()
                 .reservationId(reservation.getReservationID())
-                .userId(reservation.getUserID())
-                .ticketId(reservation.getTicketID())
+                .user(userResponse)
+                .ticket(ticketResponse)
                 .quantity(reservation.getQuantity())
                 .reservationDate(reservation.getReservationDate())
                 .build();
     }
-
-
 }

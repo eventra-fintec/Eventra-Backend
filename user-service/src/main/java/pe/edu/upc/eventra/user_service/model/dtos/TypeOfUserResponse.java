@@ -7,6 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class TypeOfUserResponse {
-    private long typeId;
+    private Long typeId;
     private String description;
 }

@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CategoryEventResponse {
-    private long id;
+    private Long id;
     private String name;
 }
 

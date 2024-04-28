@@ -9,6 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
+@Getter
 public class Ticket {
 
     @Id
@@ -19,10 +21,10 @@ public class Ticket {
     private Long eventID;
 
     @Column(nullable = false)
-    private double price;
+    private Double price;
 
     @Column(name = "total_available", nullable = false)
-    private int totalAvailable;
+    private Integer totalAvailable;
 
     @Column(length = 255)
     private String category;

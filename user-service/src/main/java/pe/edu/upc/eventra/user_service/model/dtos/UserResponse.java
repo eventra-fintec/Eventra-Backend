@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Getter
 public class UserResponse {
-    private long userId;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -20,7 +20,7 @@ public class UserResponse {
     @NoArgsConstructor
     @Builder
     public static class SimpleTypeOfUserResponse {
-        private long typeId;
+        private Long typeId;
         private String description;
     }
 }

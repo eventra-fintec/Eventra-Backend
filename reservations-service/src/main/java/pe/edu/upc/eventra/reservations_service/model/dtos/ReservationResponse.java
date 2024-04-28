@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 public class ReservationResponse {
     private Long reservationId;
-    private Long userId;
-    private Long ticketId;
+    private UserResponse user;
+    private TicketResponse ticket;
     private Integer quantity;
     private LocalDateTime reservationDate;
 }

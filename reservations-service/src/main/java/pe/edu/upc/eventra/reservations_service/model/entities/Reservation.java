@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "reservations")
@@ -25,7 +24,7 @@ public class Reservation {
     private Long ticketID; // Ticket ID from another microservice
 
     @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
