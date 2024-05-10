@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/typeofuser/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+        - id: events-service
+          uri: lb://events-service
+          predicates:
+            - Path=/api/categoryevent/**
+        - id: events-service
+          uri: lb://events-service
+          predicates:
+            - Path=/api/events/**
+        - id: tickets-service
+          uri: lb://tickets-service
+          predicates:
+            - Path=/api/tickets/**
+        - id: reservations-service
+          uri: lb://reservations-service
+          predicates:
+            - Path=/api/reservations/**
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        cloud:
+          gateway:
+            debug: debug
+            route:
+              RouteDefinitionLocator: info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
