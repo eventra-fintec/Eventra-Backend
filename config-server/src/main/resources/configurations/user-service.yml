@@ -6,12 +6,18 @@ spring:
     name: user-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/arqui?useSSL=false
+    url: jdbc:mysql://localhost:3306/arqui?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: root
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
   mvc:

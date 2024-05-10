@@ -18,11 +18,17 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/typeofuser/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
             - Path=/api/users/**
         - id: events-service
           uri: lb://events-service
           predicates:
             - Path=/api/categoryevent/**
+        - id: events-service
+          uri: lb://events-service
+          predicates:
             - Path=/api/events/**
         - id: tickets-service
           uri: lb://tickets-service
@@ -43,3 +49,7 @@ logging:
             debug: debug
             route:
               RouteDefinitionLocator: info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
