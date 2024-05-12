@@ -2,15 +2,16 @@ package pe.edu.upc.eventra.user_service.model.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pe.edu.upc.eventra.sharedservice.model.AuditableModel;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+@Table(name = "users")
+public class User extends AuditableModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -27,7 +28,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id", nullable = false)
     private TypeOfUser typeOfUser;
 

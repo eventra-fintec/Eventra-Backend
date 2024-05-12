@@ -25,6 +25,7 @@
       <module name="events-service" options="-parameters" />
       <module name="microservices" options="" />
       <module name="reservations-service" options="-parameters" />
+      <module name="shared-service" options="-parameters" />
       <module name="tickets-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>

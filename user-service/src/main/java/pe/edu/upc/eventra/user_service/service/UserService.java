@@ -3,13 +3,13 @@ package pe.edu.upc.eventra.user_service.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.eventra.sharedservice.exception.ResourceNotFoundException;
 import pe.edu.upc.eventra.user_service.model.dtos.UserRequest;
 import pe.edu.upc.eventra.user_service.model.dtos.UserResponse;
 import pe.edu.upc.eventra.user_service.model.entities.TypeOfUser;
 import pe.edu.upc.eventra.user_service.model.entities.User;
 import pe.edu.upc.eventra.user_service.repository.TypeOfUserRepository;
 import pe.edu.upc.eventra.user_service.repository.UserRepository;
-import pe.edu.upc.eventra.user_service.shared.exception.ResourceNotFoundException;
 
 import java.util.List;
 
