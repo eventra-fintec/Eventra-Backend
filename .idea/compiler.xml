@@ -12,6 +12,7 @@
         <module name="api-gateway" />
         <module name="tickets-service" />
         <module name="user-service" />
+        <module name="shared-service" />
         <module name="reservations-service" />
         <module name="events-service" />
       </profile>
