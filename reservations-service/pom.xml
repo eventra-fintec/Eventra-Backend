@@ -27,6 +27,12 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>pe.edu.upc.eventra</groupId>
+			<artifactId>shared-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

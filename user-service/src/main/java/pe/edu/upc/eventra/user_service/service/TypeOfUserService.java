@@ -19,7 +19,7 @@ public class TypeOfUserService {
 
     public void addTypeOfUser(TypeOfUserRequest typeOfUserRequest) {
         var typeOfUser = TypeOfUser.builder()
-                .description(typeOfUserRequest.getDescription())
+                .role(typeOfUserRequest.getRole())
                 .build();
 
         typeOfUserRepository.save(typeOfUser);
@@ -34,7 +34,7 @@ public class TypeOfUserService {
     public void updateTypeOfUser(long id, TypeOfUserRequest typeOfUserRequest) {
         TypeOfUser existingTypeOfUser = typeOfUserRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User type not found with id " + id));
-        existingTypeOfUser.setDescription(typeOfUserRequest.getDescription());
+        existingTypeOfUser.setRole(typeOfUserRequest.getRole());
         typeOfUserRepository.save(existingTypeOfUser);
         log.info("Updated User Type: {}", existingTypeOfUser);
     }
@@ -47,7 +47,7 @@ public class TypeOfUserService {
     private TypeOfUserResponse mapToTypeOfUserResponse(TypeOfUser typeOfUser) {
         return TypeOfUserResponse.builder()
                 .typeId(typeOfUser.getTypeId())
-                .description(typeOfUser.getDescription())
+                .role(typeOfUser.getRole())
                 .build();
     }
 }

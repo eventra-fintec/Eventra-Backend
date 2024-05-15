@@ -15,12 +15,12 @@ public class UserResponse {
     private String email;
     private SimpleTypeOfUserResponse typeOfUser;
 
-    @Data
+    @Getter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
     public static class SimpleTypeOfUserResponse {
         private Long typeId;
-        private String description;
+        private String role;
     }
 }

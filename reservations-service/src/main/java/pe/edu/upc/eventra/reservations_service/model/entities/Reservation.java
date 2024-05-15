@@ -2,16 +2,18 @@ package pe.edu.upc.eventra.reservations_service.model.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pe.edu.upc.eventra.sharedservice.model.AuditableModel;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reservations")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Reservation {
+@Table(name = "reservations")
+public class Reservation extends AuditableModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

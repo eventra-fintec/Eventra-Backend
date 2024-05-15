@@ -68,7 +68,7 @@ public class UserService {
     private UserResponse mapToUserResponse(User user) {
         UserResponse.SimpleTypeOfUserResponse typeResponse = UserResponse.SimpleTypeOfUserResponse.builder()
                 .typeId(user.getTypeOfUser().getTypeId())
-                .description(user.getTypeOfUser().getDescription())
+                .role(user.getTypeOfUser().getRole().name())
                 .build();
         return UserResponse.builder()
                 .userId(user.getUserId())

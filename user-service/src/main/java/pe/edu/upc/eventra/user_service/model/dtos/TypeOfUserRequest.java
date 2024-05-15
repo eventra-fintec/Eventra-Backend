@@ -1,11 +1,13 @@
 package pe.edu.upc.eventra.user_service.model.dtos;
 
 import lombok.*;
+import pe.edu.upc.eventra.user_service.model.entities.TypeOfUser;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class TypeOfUserRequest {
-    private String description;
+    private TypeOfUser.Roles role;
 }

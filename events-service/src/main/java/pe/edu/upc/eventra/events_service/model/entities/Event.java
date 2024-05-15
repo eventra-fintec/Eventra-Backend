@@ -2,16 +2,18 @@ package pe.edu.upc.eventra.events_service.model.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pe.edu.upc.eventra.sharedservice.model.AuditableModel;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "events")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Event {
+@Table(name = "events")
+public class Event extends AuditableModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +37,7 @@ public class Event {
     @Column(name = "id_organizer")
     private Long organizerId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_category")
     private CategoryEvent categoryEvent;
 }

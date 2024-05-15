@@ -18,6 +18,12 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>pe.edu.upc.eventra</groupId>
+			<artifactId>shared-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
