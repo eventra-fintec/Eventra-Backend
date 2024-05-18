@@ -16,10 +16,23 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
   mvc:
-    pathmatch:
+    path-match:
       matching-strategy: ANT_PATH_MATCHER
-  profiles:
-    include: shared-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: mappings

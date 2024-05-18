@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.eventra.reservations_service.model.dtos.ReservationRequest;
-import pe.edu.upc.eventra.reservations_service.model.dtos.ReservationResponse;
+import pe.edu.upc.eventra.reservations_service.model.dto.ReservationRequest;
+import pe.edu.upc.eventra.reservations_service.model.dto.ReservationResponse;
 import pe.edu.upc.eventra.reservations_service.service.ReservationService;
 
 import java.util.List;

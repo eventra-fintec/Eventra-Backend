@@ -3,7 +3,7 @@ package pe.edu.upc.eventra.events_service.repository;
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import pe.edu.upc.eventra.events_service.model.entities.Event;
+import pe.edu.upc.eventra.events_service.model.entity.Event;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,7 +19,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByStartDateBetween(LocalDateTime start, LocalDateTime end);
 
     // Custom JPQL query to find events with a certain category
-    @Query("SELECT e FROM Event e WHERE e.categoryEvent.id = :categoryId")
+    @Query("SELECT e FROM Event e WHERE e.category.id = :categoryId")
     List<Event> findByCategoryEventId(@Param("categoryId") Long categoryId);
 }
 

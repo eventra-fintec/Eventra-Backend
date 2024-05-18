@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.eventra.user_service.model.dtos.UserRequest;
-import pe.edu.upc.eventra.user_service.model.dtos.UserResponse;
+import pe.edu.upc.eventra.user_service.model.dto.UserRequest;
+import pe.edu.upc.eventra.user_service.model.dto.UserResponse;
 import pe.edu.upc.eventra.user_service.service.UserService;
 
 import java.util.List;

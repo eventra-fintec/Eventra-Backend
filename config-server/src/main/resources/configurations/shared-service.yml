@@ -12,10 +12,6 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
-logging:
-  level:
-    root: DEBUG
-
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

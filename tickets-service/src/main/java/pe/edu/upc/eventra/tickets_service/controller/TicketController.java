@@ -5,8 +5,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.eventra.tickets_service.model.dtos.TicketRequest;
-import pe.edu.upc.eventra.tickets_service.model.dtos.TicketResponse;
+import pe.edu.upc.eventra.tickets_service.model.dto.TicketRequest;
+import pe.edu.upc.eventra.tickets_service.model.dto.TicketResponse;
 import pe.edu.upc.eventra.tickets_service.service.TicketService;
 
 import java.util.List;
