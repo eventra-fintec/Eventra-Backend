@@ -10,12 +10,15 @@ import pe.edu.upc.eventra.user_service.model.dtos.UserRequest;
 import pe.edu.upc.eventra.user_service.model.dtos.UserResponse;
 import pe.edu.upc.eventra.user_service.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 @Tag(name = "UserController", description = "API for user operations")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
 
     private final UserService userService;

@@ -10,12 +10,15 @@ import pe.edu.upc.eventra.user_service.model.dtos.TypeOfUserRequest;
 import pe.edu.upc.eventra.user_service.model.dtos.TypeOfUserResponse;
 import pe.edu.upc.eventra.user_service.service.TypeOfUserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/typeofuser")
 @RequiredArgsConstructor
 @Tag(name = "TypeOfUserController", description = "API for user type operations")
+@SecurityRequirement(name = "bearerAuth")
 public class TypeOfUserController {
 
     private final TypeOfUserService typeOfUserService;
