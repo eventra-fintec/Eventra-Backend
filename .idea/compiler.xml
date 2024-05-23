@@ -17,13 +17,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="api-gateway" options="-parameters" />
-      <module name="discovery-server" options="-parameters" />
-      <module name="events-service" options="-parameters" />
+      <module name="api-gateway" options="" />
+      <module name="discovery-server" options="" />
+      <module name="events-service" options="" />
       <module name="microservices" options="" />
-      <module name="reservations-service" options="-parameters" />
-      <module name="tickets-service" options="-parameters" />
-      <module name="user-service" options="-parameters" />
+      <module name="reservations-service" options="" />
+      <module name="tickets-service" options="" />
+      <module name="user-service" options="" />
     </option>
   </component>
 </project>
