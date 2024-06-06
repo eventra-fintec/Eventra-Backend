@@ -68,7 +68,30 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/categoryevent").and().method(HttpMethod.GET).uri("lb://events-service"))
 				.route(r -> r.path("/api/categoryevent/{id}").and().method(HttpMethod.PUT).uri("lb://events-service"))
 				.route(r -> r.path("/api/categoryevent/{id}").and().method(HttpMethod.DELETE).uri("lb://events-service"))
-				.build();
-	}
+				// Rutas para notification-service
+				.route(r -> r.path("/notification-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://notification-service"))
+				.route(r -> r.path("/api/notifications").and().method(HttpMethod.POST).uri("lb://notification-service"))
+				.route(r -> r.path("/api/notifications").and().method(HttpMethod.GET).uri("lb://notification-service"))
+				.route(r -> r.path("/api/notifications/{id}").and().method(HttpMethod.GET).uri("lb://notification-service"))
+				.route(r -> r.path("/api/notifications/{id}").and().method(HttpMethod.PUT).uri("lb://notification-service"))
+				.route(r -> r.path("/api/notifications/{id}").and().method(HttpMethod.DELETE).uri("lb://notification-service"))
+				// Rutas para notification-service
+				.route(r -> r.path("/payment-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/payments").and().method(HttpMethod.POST).uri("lb://payment-service"))
+				.route(r -> r.path("/api/payments").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/payments/{id}").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/payments/{id}").and().method(HttpMethod.PUT).uri("lb://payment-service"))
+				.route(r -> r.path("/api/payments/{id}").and().method(HttpMethod.DELETE).uri("lb://payment-service"))
+				.route(r -> r.path("/api/refunds").and().method(HttpMethod.POST).uri("lb://payment-service"))
+				.route(r -> r.path("/api/refunds").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/refunds/{id}").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/refunds/{id}").and().method(HttpMethod.PUT).uri("lb://payment-service"))
+				.route(r -> r.path("/api/refunds/{id}").and().method(HttpMethod.DELETE).uri("lb://payment-service"))
+				.route(r -> r.path("/api/statuses").and().method(HttpMethod.POST).uri("lb://payment-service"))
+				.route(r -> r.path("/api/statuses").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/statuses/{id}").and().method(HttpMethod.GET).uri("lb://payment-service"))
+				.route(r -> r.path("/api/statuses/{id}").and().method(HttpMethod.PUT).uri("lb://payment-service"))
+				.route(r -> r.path("/api/statuses/{id}").and().method(HttpMethod.DELETE).uri("lb://payment-service"))
+				.build();	}
 }
 
