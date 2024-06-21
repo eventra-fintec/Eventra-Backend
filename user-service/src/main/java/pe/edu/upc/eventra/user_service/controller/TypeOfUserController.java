@@ -17,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/typeofuser")
 @RequiredArgsConstructor
-@CrossOrigin
 @Tag(name = "TypeOfUserController", description = "API for user type operations")
 @SecurityRequirement(name = "bearerAuth")
 public class TypeOfUserController {

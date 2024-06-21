@@ -1,4 +1,4 @@
-package pe.edu.upc.eventra.user_service.shared.exception.Config;
+package pe.edu.upc.eventra.user_service.shared.Config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pe.edu.upc.eventra.user_service.shared.exception.Jwt.JwtAuthenticationFilter;
+import pe.edu.upc.eventra.user_service.shared.Jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +32,6 @@ public class SecurityConfig {
                                         "/swagger-ui/**",
                                         "/swagger-ui.html",
                                         "/api/auth/**",
-                                        "/api/**",
                                         "/user-service/v3/api-docs",
                                         "/swagger-resources/**",
                                         "/webjars/**").permitAll()

@@ -1,4 +1,4 @@
-package pe.edu.upc.eventra.user_service.shared.exception.Config;
+package pe.edu.upc.eventra.user_service.shared.Config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

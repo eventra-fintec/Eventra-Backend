@@ -13,7 +13,7 @@ import pe.edu.upc.eventra.user_service.model.entities.TypeOfUser;
 import pe.edu.upc.eventra.user_service.model.entities.User;
 import pe.edu.upc.eventra.user_service.repository.TypeOfUserRepository;
 import pe.edu.upc.eventra.user_service.repository.UserRepository;
-import pe.edu.upc.eventra.user_service.shared.exception.Jwt.JwtService;
+import pe.edu.upc.eventra.user_service.shared.Jwt.JwtService;
 import pe.edu.upc.eventra.user_service.shared.exception.ResourceNotFoundException;
 
 @Service
