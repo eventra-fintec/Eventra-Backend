@@ -1,4 +1,4 @@
-package pe.edu.upc.eventra.user_service.shared.exception.Config;
+package pe.edu.upc.eventra.user_service.shared.Config;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
