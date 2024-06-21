@@ -43,6 +43,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.PUT).uri("lb://user-service"))
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.DELETE).uri("lb://user-service"))
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.GET).uri("lb://user-service"))
+				.route(r -> r.path("/api/users/email/{email}").and().method(HttpMethod.GET).uri("lb://user-service"))
 				// Rutas para tickets-service
 				.route(r -> r.path("/tickets-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://tickets-service"))
 				.route(r -> r.path("/api/tickets").and().method(HttpMethod.POST).uri("lb://tickets-service"))
@@ -68,6 +69,8 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/categoryevent").and().method(HttpMethod.GET).uri("lb://events-service"))
 				.route(r -> r.path("/api/categoryevent/{id}").and().method(HttpMethod.PUT).uri("lb://events-service"))
 				.route(r -> r.path("/api/categoryevent/{id}").and().method(HttpMethod.DELETE).uri("lb://events-service"))
+				.route(r -> r.path("/api/events/title/{title}").and().method(HttpMethod.GET).uri("lb://events-service"))
+				.route(r -> r.path("/api/events/category/{categoryId}").and().method(HttpMethod.GET).uri("lb://events-service"))
 				// Rutas para notification-service
 				.route(r -> r.path("/notification-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://notification-service"))
 				.route(r -> r.path("/api/notifications").and().method(HttpMethod.POST).uri("lb://notification-service"))

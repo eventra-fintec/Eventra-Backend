@@ -1,6 +1,6 @@
 package pe.edu.upc.eventra.events_service.repository;
 
-import feign.Param;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pe.edu.upc.eventra.events_service.model.entities.Event;

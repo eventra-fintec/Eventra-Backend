@@ -18,7 +18,6 @@ import pe.edu.upc.eventra.events_service.shared.exception.ResourceNotFoundExcept
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -60,6 +59,18 @@ public class EventService {
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id: " + id));
 
         return mapToEventResponse(event);
+    }
+
+    public List<EventResponse> getEventsByTitle(String title) {
+        return eventRepository.findByTitleContainingIgnoreCase(title).stream()
+                .map(this::mapToEventResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<EventResponse> getEventsByCategory(Long categoryId) {
+        return eventRepository.findByCategoryEventId(categoryId).stream()
+                .map(this::mapToEventResponse)
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -125,4 +136,3 @@ public class EventService {
                 .build();
     }
 }
-

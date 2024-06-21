@@ -24,6 +24,7 @@ public class SecurityConfig {
                                 "/api/**",
                                 "/events-service/v3/api-docs",
                                 "/swagger-resources/**",
+                                "/api/events/category/**",
                                 "/webjars/**").permitAll() // Permitir acceso a Swagger
                         .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
                 )

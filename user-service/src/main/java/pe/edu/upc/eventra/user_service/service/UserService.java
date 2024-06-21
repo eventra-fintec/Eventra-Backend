@@ -65,6 +65,18 @@ public class UserService {
         log.info("Deleted User with id {}", id);
     }
 
+    public UserResponse getUserById(long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+        return mapToUserResponse(user);
+    }
+
+    public UserResponse getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+        return mapToUserResponse(user);
+    }
+
     private UserResponse mapToUserResponse(User user) {
         UserResponse.SimpleTypeOfUserResponse typeResponse = UserResponse.SimpleTypeOfUserResponse.builder()
                 .typeId(user.getTypeOfUser().getTypeId())
@@ -77,12 +89,5 @@ public class UserService {
                 .email(user.getEmail())
                 .typeOfUser(typeResponse)
                 .build();
-    }
-
-
-    public UserResponse getUserById(long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
-        return mapToUserResponse(user);
     }
 }
