@@ -12,6 +12,7 @@ import pe.edu.upc.eventra.events_service.service.EventService;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/events")
 @RequiredArgsConstructor
@@ -23,7 +24,6 @@ public class EventController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Add a new event", description = "Adds a new event to the system")
-    @ApiResponse(responseCode = "201", description = "Event created")
     public EventResponse addEvent(@RequestBody EventRequest eventRequest) {
         return eventService.addEvent(eventRequest);
     }
@@ -31,7 +31,6 @@ public class EventController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get event by ID", description = "Retrieves a specific event by ID")
-    @ApiResponse(responseCode = "200", description = "Successful retrieval of event")
     public EventResponse getEventById(@PathVariable("id") long id) {
         return eventService.getEventById(id);
     }
@@ -39,15 +38,27 @@ public class EventController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get all events", description = "Retrieves a list of all events")
-    @ApiResponse(responseCode = "200", description = "Successful retrieval of events")
     public List<EventResponse> getAllEvents() {
         return eventService.getAllEvents();
+    }
+
+    @GetMapping("/title/{title}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get events by title", description = "Retrieves a list of events by title")
+    public List<EventResponse> getEventsByTitle(@PathVariable("title") String title) {
+        return eventService.getEventsByTitle(title);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get events by category", description = "Retrieves a list of events by category")
+    public List<EventResponse> getEventsByCategory(@PathVariable("categoryId") Long categoryId) {
+        return eventService.getEventsByCategory(categoryId);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Update an event", description = "Updates a specific event by their ID")
-    @ApiResponse(responseCode = "200", description = "Event updated")
     public void updateEvent(@PathVariable("id") long id, @RequestBody EventRequest eventRequest) {
         eventService.updateEvent(id, eventRequest);
     }
@@ -55,9 +66,7 @@ public class EventController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Delete an event", description = "Deletes a specific event by their ID")
-    @ApiResponse(responseCode = "204", description = "Event deleted")
     public void deleteEvent(@PathVariable("id") long id) {
         eventService.deleteEvent(id);
     }
 }
-

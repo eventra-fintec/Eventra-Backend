@@ -10,6 +10,8 @@ import pe.edu.upc.eventra.user_service.model.dtos.UserRequest;
 import pe.edu.upc.eventra.user_service.model.dtos.UserResponse;
 import pe.edu.upc.eventra.user_service.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import java.util.List;
 
 @RestController
@@ -58,6 +60,14 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Successful retrieval of user")
     public UserResponse getUserById(@PathVariable("id") long id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping("/email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get a user by email", description = "Retrieves a specific user by their email")
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of user")
+    public UserResponse getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
     }
 }
 

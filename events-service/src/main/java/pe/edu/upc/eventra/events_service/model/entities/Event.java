@@ -35,6 +35,9 @@ public class Event {
     @Column(name = "id_organizer")
     private Long organizerId;
 
+    @Column(name = "url", nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
+    private String url; // Nuevo campo agregado
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_category")
     private CategoryEvent categoryEvent;

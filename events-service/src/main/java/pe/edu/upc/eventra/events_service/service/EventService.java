@@ -18,7 +18,6 @@ import pe.edu.upc.eventra.events_service.shared.exception.ResourceNotFoundExcept
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -42,6 +41,7 @@ public class EventService {
                 .location(eventRequest.getLocation())
                 .organizerId(organizer.getUserId())
                 .categoryEvent(categoryEvent)
+                .url(eventRequest.getUrl()) // Nuevo campo agregado
                 .build();
 
         Event savedEvent = eventRepository.save(event);
@@ -62,6 +62,18 @@ public class EventService {
         return mapToEventResponse(event);
     }
 
+    public List<EventResponse> getEventsByTitle(String title) {
+        return eventRepository.findByTitleContainingIgnoreCase(title).stream()
+                .map(this::mapToEventResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<EventResponse> getEventsByCategory(Long categoryId) {
+        return eventRepository.findByCategoryEventId(categoryId).stream()
+                .map(this::mapToEventResponse)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public EventResponse updateEvent(long id, EventRequest eventRequest) {
         Event event = eventRepository.findById(id)
@@ -79,6 +91,7 @@ public class EventService {
         event.setLocation(eventRequest.getLocation());
         event.setOrganizerId(eventRequest.getOrganizerId()); // Set the validated user ID
         event.setCategoryEvent(categoryEvent);
+        event.setUrl(eventRequest.getUrl()); // Nuevo campo agregado
 
         Event updatedEvent = eventRepository.save(event);
         log.info("Updated Event: {}", updatedEvent);
@@ -122,7 +135,7 @@ public class EventService {
                 .location(event.getLocation())
                 .organizer(organizer)
                 .categoryEvent(categoryResponse)
+                .url(event.getUrl()) // Nuevo campo agregado
                 .build();
     }
 }
-

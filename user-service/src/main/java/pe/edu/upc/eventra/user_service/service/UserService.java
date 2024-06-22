@@ -29,6 +29,7 @@ public class UserService {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .typeOfUser(userType)
+                .url(request.getUrl()) // Nuevo campo agregado
                 .build();
         userRepository.save(user);
         log.info("User added: {}", user);
@@ -52,6 +53,7 @@ public class UserService {
         existingUser.setEmail(userRequest.getEmail());
         existingUser.setPassword(userRequest.getPassword());
         existingUser.setTypeOfUser(userType);
+        existingUser.setUrl(userRequest.getUrl()); // Nuevo campo agregado
 
         userRepository.save(existingUser);
         log.info("Updated User: {}", existingUser);
@@ -65,6 +67,18 @@ public class UserService {
         log.info("Deleted User with id {}", id);
     }
 
+    public UserResponse getUserById(long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+        return mapToUserResponse(user);
+    }
+
+    public UserResponse getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+        return mapToUserResponse(user);
+    }
+
     private UserResponse mapToUserResponse(User user) {
         UserResponse.SimpleTypeOfUserResponse typeResponse = UserResponse.SimpleTypeOfUserResponse.builder()
                 .typeId(user.getTypeOfUser().getTypeId())
@@ -76,13 +90,7 @@ public class UserService {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .typeOfUser(typeResponse)
+                .url(user.getUrl()) // Nuevo campo agregado
                 .build();
-    }
-
-
-    public UserResponse getUserById(long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
-        return mapToUserResponse(user);
     }
 }

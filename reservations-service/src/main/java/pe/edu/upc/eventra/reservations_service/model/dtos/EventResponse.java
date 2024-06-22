@@ -20,5 +20,6 @@ public class EventResponse {
     private String location;
     private UserResponse organizer;
     private CategoryEventResponse categoryEvent;
+    private String url; // Nuevo campo agregado
 }
 
