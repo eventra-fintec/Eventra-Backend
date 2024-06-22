@@ -14,6 +14,7 @@ public class UserResponse {
     private String lastName;
     private String email;
     private SimpleTypeOfUserResponse typeOfUser;
+    private String url; // Nuevo campo agregado
 
     @Data
     @AllArgsConstructor

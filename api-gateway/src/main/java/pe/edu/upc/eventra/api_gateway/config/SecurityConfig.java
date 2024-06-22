@@ -19,7 +19,6 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable) // Deshabilita CSRF
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilita CORS
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
                                 //"/**",
@@ -41,21 +40,6 @@ public class SecurityConfig {
                 ); // Configura autenticación básica
 
         return http.build();
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://example.com")); // Agrega los dominios que necesites
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
-        configuration.setMaxAge(3600L);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        return source;
     }
 
 }

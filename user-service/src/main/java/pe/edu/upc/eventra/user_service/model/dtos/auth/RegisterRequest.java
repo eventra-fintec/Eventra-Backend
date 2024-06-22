@@ -15,4 +15,5 @@ public class RegisterRequest {
     private String email;
     private String password;
     private Long typeId;
+    private String url; // Nuevo campo agregado
 }

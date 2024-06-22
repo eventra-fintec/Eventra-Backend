@@ -16,4 +16,5 @@ public class EventRequest {
     private String location;
     private Long organizerId;
     private Long categoryId;
+    private String url;
 }

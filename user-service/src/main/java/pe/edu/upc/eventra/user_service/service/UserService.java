@@ -29,6 +29,7 @@ public class UserService {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .typeOfUser(userType)
+                .url(request.getUrl()) // Nuevo campo agregado
                 .build();
         userRepository.save(user);
         log.info("User added: {}", user);
@@ -52,6 +53,7 @@ public class UserService {
         existingUser.setEmail(userRequest.getEmail());
         existingUser.setPassword(userRequest.getPassword());
         existingUser.setTypeOfUser(userType);
+        existingUser.setUrl(userRequest.getUrl()); // Nuevo campo agregado
 
         userRepository.save(existingUser);
         log.info("Updated User: {}", existingUser);
@@ -88,6 +90,7 @@ public class UserService {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .typeOfUser(typeResponse)
+                .url(user.getUrl()) // Nuevo campo agregado
                 .build();
     }
 }

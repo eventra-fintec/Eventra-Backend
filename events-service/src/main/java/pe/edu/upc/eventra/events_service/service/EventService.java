@@ -41,6 +41,7 @@ public class EventService {
                 .location(eventRequest.getLocation())
                 .organizerId(organizer.getUserId())
                 .categoryEvent(categoryEvent)
+                .url(eventRequest.getUrl()) // Nuevo campo agregado
                 .build();
 
         Event savedEvent = eventRepository.save(event);
@@ -90,6 +91,7 @@ public class EventService {
         event.setLocation(eventRequest.getLocation());
         event.setOrganizerId(eventRequest.getOrganizerId()); // Set the validated user ID
         event.setCategoryEvent(categoryEvent);
+        event.setUrl(eventRequest.getUrl()); // Nuevo campo agregado
 
         Event updatedEvent = eventRepository.save(event);
         log.info("Updated Event: {}", updatedEvent);
@@ -133,6 +135,7 @@ public class EventService {
                 .location(event.getLocation())
                 .organizer(organizer)
                 .categoryEvent(categoryResponse)
+                .url(event.getUrl()) // Nuevo campo agregado
                 .build();
     }
 }
