@@ -18,7 +18,6 @@ import java.util.List;
 @RequestMapping("/api/typeofuser")
 @RequiredArgsConstructor
 @Tag(name = "TypeOfUserController", description = "API for user type operations")
-@SecurityRequirement(name = "bearerAuth")
 public class TypeOfUserController {
 
     private final TypeOfUserService typeOfUserService;
