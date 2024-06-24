@@ -71,6 +71,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/categoryevent/{id}").and().method(HttpMethod.DELETE).uri("lb://events-service"))
 				.route(r -> r.path("/api/events/title/{title}").and().method(HttpMethod.GET).uri("lb://events-service"))
 				.route(r -> r.path("/api/events/category/{categoryId}").and().method(HttpMethod.GET).uri("lb://events-service"))
+				.route(r -> r.path("/api/events/user/{userId}").and().method(HttpMethod.GET).uri("lb://events-service"))
 				// Rutas para notification-service
 				.route(r -> r.path("/notification-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://notification-service"))
 				.route(r -> r.path("/api/notifications").and().method(HttpMethod.POST).uri("lb://notification-service"))

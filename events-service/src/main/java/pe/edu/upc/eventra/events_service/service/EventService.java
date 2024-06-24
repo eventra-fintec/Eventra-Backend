@@ -48,7 +48,12 @@ public class EventService {
         log.info("Event added: {}", savedEvent);
         return mapToEventResponse(savedEvent);
     }
-
+    public List<EventResponse> getEventsByUserId(Long userId) {
+        List<Event> events = eventRepository.findByOrganizerId(userId);
+        return events.stream()
+                .map(this::mapToEventResponse)
+                .collect(Collectors.toList());
+    }
     public List<EventResponse> getAllEvents() {
         return eventRepository.findAll().stream()
                 .map(this::mapToEventResponse)

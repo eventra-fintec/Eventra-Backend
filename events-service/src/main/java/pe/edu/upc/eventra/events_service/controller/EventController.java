@@ -69,4 +69,11 @@ public class EventController {
     public void deleteEvent(@PathVariable("id") long id) {
         eventService.deleteEvent(id);
     }
+
+    @GetMapping("/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get events by user ID", description = "Retrieves a list of events by user ID")
+    public List<EventResponse> getEventsByUserId(@PathVariable("userId") Long userId) {
+        return eventService.getEventsByUserId(userId);
+    }
 }
