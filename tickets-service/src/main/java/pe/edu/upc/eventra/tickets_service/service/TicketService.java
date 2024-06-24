@@ -40,6 +40,13 @@ public class TicketService {
         return mapToTicketResponse(savedTicket);
     }
 
+    public List<TicketResponse> getTicketsByEventID(Long eventID) {
+        List<Ticket> tickets = ticketRepository.findByEventID(eventID);
+        return tickets.stream()
+                .map(this::mapToTicketResponse)
+                .collect(Collectors.toList());
+    }
+
     public List<TicketResponse> getAllTickets() {
         return ticketRepository.findAll().stream()
                 .map(this::mapToTicketResponse)

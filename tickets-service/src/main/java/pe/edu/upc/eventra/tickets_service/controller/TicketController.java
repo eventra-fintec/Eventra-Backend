@@ -40,6 +40,13 @@ public class TicketController {
         return ticketService.getTicketById(id);
     }
 
+    @GetMapping("/event/{eventID}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get tickets by event ID", description = "Retrieves a list of tickets by event ID")
+    public List<TicketResponse> getTicketsByEventID(@PathVariable("eventID") Long eventID) {
+        return ticketService.getTicketsByEventID(eventID);
+    }
+
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Update a ticket", description = "Updates a specific ticket by ID")

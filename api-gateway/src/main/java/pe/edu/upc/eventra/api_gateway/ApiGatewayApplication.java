@@ -51,6 +51,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/tickets/{id}").and().method(HttpMethod.GET).uri("lb://tickets-service"))
 				.route(r -> r.path("/api/tickets/{id}").and().method(HttpMethod.PUT).uri("lb://tickets-service"))
 				.route(r -> r.path("/api/tickets/{id}").and().method(HttpMethod.DELETE).uri("lb://tickets-service"))
+				.route(r -> r.path("/api/tickets/event/{eventId}").and().method(HttpMethod.GET).uri("lb://tickets-service"))
 				// Rutas para reservations-service
 				.route(r -> r.path("/reservations-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://reservations-service"))
 				.route(r -> r.path("/api/reservations").and().method(HttpMethod.POST).uri("lb://reservations-service"))
